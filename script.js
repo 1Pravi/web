@@ -1,40 +1,53 @@
-// Smooth scrolling for navigation links
-document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
+document.addEventListener("DOMContentLoaded", function() {
+    // Animate the background gradient
+    let body = document.body;
+    let degree = 0;
 
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Change header background color on scroll
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
+    function animateBackground() {
+        degree = (degree + 1) % 360;
+        body.style.background = `linear-gradient(${degree}deg, black, red)`;
+        requestAnimationFrame(animateBackground);
     }
-});
+    animateBackground();
 
-// Reveal sections on scroll
-const sections = document.querySelectorAll('.section');
-const observerOptions = {
-    root: null,
-    threshold: 0.1
-};
+    // Smooth scrolling for anchor links
+    const links = document.querySelectorAll("nav ul li a");
 
-const sectionObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+    for (const link of links) {
+        link.addEventListener("click", function(e) {
+            e.preventDefault();
+            const href = this.getAttribute("href");
+            if (href && href.startsWith("#")) {
+                document.querySelector(href).scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
+        });
+    }
+
+    // Responsive menu toggle
+    const menuToggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("nav ul");
+
+    menuToggle.addEventListener("click", function() {
+        nav.classList.toggle("open");
+    });
+
+    // Simple scroll-to-top button
+    const scrollTopBtn = document.querySelector(".scroll-top");
+
+    window.addEventListener("scroll", function() {
+        if (window.scrollY > 300) {
+            scrollTopBtn.classList.add("visible");
+        } else {
+            scrollTopBtn.classList.remove("visible");
         }
     });
-}, observerOptions);
 
-sections.forEach(section => {
-    sectionObserver.observe(section);
+    scrollTopBtn.addEventListener("click", function() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
 });
