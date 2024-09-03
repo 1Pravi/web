@@ -10,17 +10,20 @@ body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
+/* Header Styles */
 header {
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
-    padding: 1rem 0;
+    padding: 10px 20px;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header.scrolled {
@@ -28,6 +31,7 @@ header.scrolled {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
 }
 
+/* Logo Styles */
 .logo img {
     height: 50px;
     margin-left: 20px;
@@ -39,19 +43,20 @@ header.scrolled {
     filter: brightness(1.2);
 }
 
-nav {
-    text-align: center;
-}
-
+/* Navigation Styles */
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    margin-right: 20px;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 15px;
+    margin-right: 15px;
 }
 
 nav ul li a {
@@ -85,225 +90,78 @@ nav ul li a:hover {
     transform: translateY(-2px);
 }
 
+/* Donate Button Styles */
 nav .donate-btn {
-    background-color: #e74c3c; /* Red */
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-nav .donate-btn:hover {
-    background-color: #c0392b; /* Darker red */
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Main Sections */
-main {
-    padding-top: 80px; /* Adjust based on header height */
-}
-
-.section {
-    padding: 2rem;
-    margin: 2rem auto;
-    background: rgba(255, 255, 255, 0.9); /* White background */
-    border-radius: 10px;
-    max-width: 900px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: fadeIn 1s ease-in-out;
-    position: relative;
-}
-
-.section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2));
-    z-index: 0;
-    opacity: 0.3;
-    border-radius: 10px;
-    transition: opacity 0.3s ease;
-}
-
-.section:hover::before {
-    opacity: 0.5;
-}
-
-.section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-}
-
-h2 {
-    color: #e74c3c; /* Red */
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-h2:hover {
-    color: #c0392b; /* Darker red */
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-ul {
-    text-align: left;
-    margin: 0 auto;
-    max-width: 700px;
-    padding-left: 1.5rem;
-    list-style-type: disc;
-}
-
-ul li {
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-}
-
-/* Call-to-Action Buttons */
-a.cta-btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
+    background-color: #e74c3c;
     color: #fff;
-    background: #e74c3c; /* Red */
+    padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-a.cta-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s ease;
-    transform: translate(-50%, -50%) scale(0);
-    border-radius: 50%;
+nav .donate-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
 }
 
-a.cta-btn:hover::before {
-    transform: translate(-50%, -50%) scale(1);
+/* Main Content Styles */
+main {
+    padding-top: 100px; /* Adjust padding to make room for fixed header */
 }
 
-a.cta-btn:hover {
-    background-color: #c0392b; /* Darker red */
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+.section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.cta-btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 /* Footer Styles */
 footer {
-    background: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.8);
     color: #fff;
+    padding: 20px 0;
     text-align: center;
-    padding: 1rem;
     position: relative;
     bottom: 0;
     width: 100%;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
+}
+
+footer p {
+    margin: 5px 0;
 }
 
 footer a {
-    color: #e74c3c; /* Red */
+    color: #fff;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 footer a:hover {
-    text-decoration: underline;
-    color: #c0392b; /* Darker red */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    nav ul {
-        display: block;
-    }
-
-    nav ul li {
-        display: block;
-        margin: 0.5rem 0;
-    }
-
-    .logo img {
-        height: 40px;
-    }
-
-    .section {
-        padding: 1rem;
-        margin: 1rem auto;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
-}
-
-/* Keyframe Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes bounceIn {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1.05);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-/* Animations for Sections */
-.section:nth-child(odd) {
-    animation: slideIn 1s ease-out;
-}
-
-.section:nth-child(even) {
-    animation: bounceIn 1s ease-out;
-}
-
-/* Scroll Effect */
-@media (min-width: 769px) {
-    header.scrolled {
-        background: rgba(0, 0, 0, 0.9);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
-    }
+    color: #e74c3c;
 }
