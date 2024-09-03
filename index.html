@@ -4,17 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KS Foundation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo-container img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .donate-button {
+            background-color: #ff6600;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: row;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #333;
+                width: 200px;
+                padding: 20px;
+                border-radius: 0 0 0 10px;
+            }
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            nav.active {
+                display: flex;
+            }
+            .donate-button {
+                align-self: flex-end;
+                margin-top: auto;
+                width: 100%;
+            }
+        }
+    </style>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
 <header>
-    <div class="logo">
+    <div class="logo-container">
         <img src="logo.png" alt="KS Foundation Logo">
+        <span>KS Foundation</span>
     </div>
-    <div class="foundation-info">
-        <h1>KS Foundation</h1>
-        <p>Reg no. 2/2023</p>
-    </div>
+    <span class="menu-toggle">&#9776;</span>
     <nav>
         <ul>
             <li><a href="#">Home</a></li>
@@ -22,10 +112,16 @@
             <li><a href="#">Our Programs</a></li>
             <li><a href="#">Volunteer Us</a></li>
             <li><a href="#">E-magazine</a></li>
+            <a href="#" class="donate-button">Donate</a>
         </ul>
     </nav>
-    <a href="#" class="donate-button">Donate</a>
 </header>
+
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('nav').classList.toggle('active');
+    });
+</script>
 
 <main class="content">
     <section>
@@ -62,10 +158,10 @@
             <img src="logo.png" alt="Aniyam Foundation Logo">
             <p>Serve for humanity and social work.<br>Connect with us!!</p>
             <div class="social-icons">
-                <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
-                <a href="#"><img src="youtube-icon.png" alt="YouTube"></a>
-                <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
-                <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+                <a href="#" aria-label="Twitter"><img src="twitter-icon.png" alt="Twitter"></a>
+                <a href="#" aria-label="YouTube"><img src="youtube-icon.png" alt="YouTube"></a>
+                <a href="#" aria-label="Instagram"><img src="instagram-icon.png" alt="Instagram"></a>
+                <a href="#" aria-label="LinkedIn"><img src="linkedin-icon.png" alt="LinkedIn"></a>
             </div>
         </div>
         <div class="footer-section">
@@ -73,8 +169,8 @@
             <ul>
                 <li><a href="#">Paalmanam</a></li>
                 <li><a href="#">Queer Helpline</a></li>
-                <li><a href="#">Queer cafe</a></li>
-                <li><a href="#">Passipini pokuvom</a></li>
+                <li><a href="#">Queer Cafe</a></li>
+                <li><a href="#">Passipini Pokuvom</a></li>
                 <li><a href="#">Aniyam Publishing House</a></li>
             </ul>
         </div>
@@ -98,9 +194,9 @@
         </div>
         <div class="footer-section">
             <h3>Paalmanam</h3>
-            <p>Subscribe for our magazine</p>
+            <p>Subscribe to our magazine</p>
             <form>
-                <input type="email" placeholder="sample@mail.com">
+                <input type="email" placeholder="sample@mail.com" required>
                 <button type="submit">Subscribe</button>
             </form>
         </div>
@@ -109,7 +205,3 @@
         <p>© 2023 Aniyam Foundation</p>
     </div>
 </footer>
-
-<script src="script.js"></script>
-</body>
-</html>

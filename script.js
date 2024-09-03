@@ -1,53 +1,69 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Animate the background gradient
-    let body = document.body;
-    let degree = 0;
+    // Animate the header logo on hover
+    const logo = document.querySelector('.logo img');
+    logo.addEventListener('mouseenter', function() {
+        logo.style.transform = 'rotate(360deg)';
+        logo.style.transition = 'transform 0.6s ease-in-out';
+    });
+    logo.addEventListener('mouseleave', function() {
+        logo.style.transform = 'rotate(0deg)';
+    });
 
-    function animateBackground() {
-        degree = (degree + 1) % 360;
-        body.style.background = `linear-gradient(${degree}deg, black, red)`;
-        requestAnimationFrame(animateBackground);
-    }
-    animateBackground();
-
-    // Smooth scrolling for anchor links
-    const links = document.querySelectorAll("nav ul li a");
-
-    for (const link of links) {
-        link.addEventListener("click", function(e) {
+    // Smooth scroll to sections when clicking on nav links
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
             e.preventDefault();
-            const href = this.getAttribute("href");
-            if (href && href.startsWith("#")) {
-                document.querySelector(href).scrollIntoView({
-                    behavior: "smooth"
-                });
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            window.scrollTo({
+                top: targetSection.offsetTop,
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Animate donate button on hover
+    const donateButton = document.querySelector('.donate-button');
+    donateButton.addEventListener('mouseenter', function() {
+        donateButton.style.transform = 'scale(1.1)';
+        donateButton.style.boxShadow = '0px 4px 15px rgba(0, 0, 0, 0.3)';
+        donateButton.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+    });
+    donateButton.addEventListener('mouseleave', function() {
+        donateButton.style.transform = 'scale(1)';
+        donateButton.style.boxShadow = 'none';
+    });
+
+    // Reveal elements on scroll
+    const revealElements = document.querySelectorAll('.content section');
+    window.addEventListener('scroll', function() {
+        const windowHeight = window.innerHeight;
+        revealElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            if (elementTop < windowHeight - 100) {
+                element.style.opacity = 1;
+                element.style.transform = 'translateY(0)';
+                element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
             }
         });
-    }
-
-    // Responsive menu toggle
-    const menuToggle = document.querySelector(".menu-toggle");
-    const nav = document.querySelector("nav ul");
-
-    menuToggle.addEventListener("click", function() {
-        nav.classList.toggle("open");
     });
 
-    // Simple scroll-to-top button
-    const scrollTopBtn = document.querySelector(".scroll-top");
-
-    window.addEventListener("scroll", function() {
-        if (window.scrollY > 300) {
-            scrollTopBtn.classList.add("visible");
-        } else {
-            scrollTopBtn.classList.remove("visible");
-        }
+    // Initially hide elements for reveal animation
+    revealElements.forEach(element => {
+        element.style.opacity = 0;
+        element.style.transform = 'translateY(50px)';
     });
 
-    scrollTopBtn.addEventListener("click", function() {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+    // Animate footer social icons on hover
+    const socialIcons = document.querySelectorAll('.social-icons img');
+    socialIcons.forEach(icon => {
+        icon.addEventListener('mouseenter', function() {
+            icon.style.transform = 'scale(1.3)';
+            icon.style.transition = 'transform 0.3s ease';
+        });
+        icon.addEventListener('mouseleave', function() {
+            icon.style.transform = 'scale(1)';
         });
     });
 });

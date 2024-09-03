@@ -166,3 +166,197 @@ footer {
     border-top: 1px solid #ddd;
     padding-top: 10px;
 }
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-top.visible {
+    display: block;
+}
+
+.scroll-top:hover {
+    opacity: 1;
+}
+/* Floating Menu */
+.floating-menu {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.floating-button {
+    width: 50px;
+    height: 50px;
+    background-color: #0056ff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    transform: scale(1);
+}
+
+.floating-button:hover {
+    background-color: #0038b3;
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.floating-button i {
+    font-size: 20px;
+}
+
+/* Animation for buttons appearing */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.floating-button {
+    animation: slideIn 0.5s ease forwards;
+}
+
+/* Icons (replace these with Font Awesome or other icon fonts if desired) */
+.icon-message::before {
+    content: "\2709"; /* Envelope symbol */
+}
+
+.icon-phone::before {
+    content: "\260E"; /* Telephone symbol */
+}
+
+.icon-arrow-up::before {
+    content: "\2191"; /* Up arrow symbol */
+}
+
+/* Scroll to top button style */
+.scroll-top {
+    display: none; /* Hide by default */
+}
+
+.scroll-top.visible {
+    display: flex; /* Show when visible */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .floating-menu {
+        bottom: 15px;
+        right: 15px;
+        flex-direction: row-reverse; /* Stack buttons horizontally */
+        gap: 15px;
+    }
+
+    .floating-button {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+}
+/* Base styling for the footer */
+footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section {
+    margin-bottom: 20px;
+}
+
+.footer-section h3 {
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-section .social-icons {
+    margin-top: 10px;
+}
+
+.footer-section .social-icons a {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.footer-section .social-icons img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section form input,
+.footer-section form button {
+    margin-top: 10px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Mobile responsive styling */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-section {
+        margin-bottom: 15px;
+    }
+
+    .footer-section h3 {
+        font-size: 1.2em;
+    }
+}
