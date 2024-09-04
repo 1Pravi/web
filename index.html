@@ -10,6 +10,7 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            scroll-behavior: smooth;
         }
         header {
             display: flex;
@@ -18,6 +19,10 @@
             padding: 10px 20px;
             background-color: #333;
             color: #fff;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
         .logo-container {
             display: flex;
@@ -45,10 +50,18 @@
         }
         nav ul li {
             margin-left: 20px;
+            transition: transform 0.2s;
+        }
+        nav ul li:hover {
+            transform: scale(1.1);
         }
         nav ul li a {
             color: #fff;
             text-decoration: none;
+            transition: color 0.2s;
+        }
+        nav ul li a:hover {
+            color: #ff6600;
         }
         .donate-button {
             background-color: #ff6600;
@@ -58,6 +71,105 @@
             border-radius: 5px;
             display: inline-block;
             margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .donate-button:hover {
+            background-color: #e65c00;
+        }
+        main {
+            padding-top: 80px; /* to avoid content hiding under the fixed header */
+        }
+        .content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        section h2, section h3 {
+            color: #333;
+        }
+        section p, section ul {
+            color: #555;
+        }
+        section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        section ul li {
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        .footer-section h3 {
+            border-bottom: 2px solid #ff6600;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-section ul li a:hover {
+            color: #ff6600;
+        }
+        .footer-section form input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .footer-section form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff6600;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .footer-section form button:hover {
+            background-color: #e65c00;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+        .footer-bottom {
+            background-color: #222;
+            padding: 10px 0;
+        }
+        .footer-bottom p {
+            margin: 0;
+            color: #ccc;
         }
         /* Mobile styles */
         @media (max-width: 768px) {
@@ -93,6 +205,13 @@
                 margin-top: auto;
                 width: 100%;
             }
+            .content {
+                padding: 20px;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
     <link rel="stylesheet" href="styles.css">
@@ -107,29 +226,28 @@
     <span class="menu-toggle">&#9776;</span>
     <nav>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Our Programs</a></li>
-            <li><a href="#">Volunteer Us</a></li>
-            <li><a href="#">E-magazine</a></li>
-            <a href="#" class="donate-button">Donate</a>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#programs">Our Programs</a></li>
+            <li><a href="#volunteer">Volunteer Us</a></li>
+            <li><a href="#magazine">E-magazine</a></li>
+            <a href="#donate" class="donate-button">Donate</a>
         </ul>
     </nav>
 </header>
 
-<script>
-    document.querySelector('.menu-toggle').addEventListener('click', function() {
-        document.querySelector('nav').classList.toggle('active');
-    });
-</script>
-
 <main class="content">
-    <section>
+    <section id="home">
+        <h2>Welcome to KS Foundation</h2>
+        <p>We are dedicated to making a positive impact on society by supporting education, social development, and empowerment initiatives.</p>
+    </section>
+
+    <section id="about">
         <h2>About Us</h2>
         <p>KS Foundation is a Non-Government organization. KS Foundation works towards youth. Our aim is to create a hunger-free society, student development, and empowerment. We grant scholarships and stipends to needy students of minority or weaker sections of society for their education. We also support and promote the growing of trees.</p>
     </section>
 
-    <section>
+    <section id="programs">
         <h3>Our Work</h3>
         <ul>
             <li>Education</li>
@@ -145,7 +263,7 @@
         </ul>
     </section>
 
-    <section>
+    <section id="contact">
         <h3>Contact Us</h3>
         <p>Email: ksfoundationsalem2021@gmail.com</p>
         <p>Phone: 9342359392</p>
@@ -155,8 +273,8 @@
 <footer>
     <div class="footer-content">
         <div class="footer-section logo-section">
-            <img src="logo.png" alt="Aniyam Foundation Logo">
-            <p>Serve for humanity and social work.<br>Connect with us!!</p>
+            <img src="logo.png" alt="KS Foundation Logo">
+            <p>Serve for humanity and social work.<br>Connect with us!</p>
             <div class="social-icons">
                 <a href="#" aria-label="Twitter"><img src="twitter-icon.png" alt="Twitter"></a>
                 <a href="#" aria-label="YouTube"><img src="youtube-icon.png" alt="YouTube"></a>
@@ -169,39 +287,35 @@
             <ul>
                 <li><a href="#">Paalmanam</a></li>
                 <li><a href="#">Queer Helpline</a></li>
-                <li><a href="#">Queer Cafe</a></li>
-                <li><a href="#">Passipini Pokuvom</a></li>
-                <li><a href="#">Aniyam Publishing House</a></li>
+                <li><a href="#">Water Conservation</a></li>
+                <li><a href="#">Animal Rescue</a></li>
             </ul>
         </div>
         <div class="footer-section">
-            <h3>Pages</h3>
+            <h3>Get Involved</h3>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Volunteer Us</a></li>
-                <li><a href="#">Donate Us</a></li>
-                <li><a href="#">E-magazine</a></li>
+                <li><a href="#">Volunteer</a></li>
+                <li><a href="#">Partner with Us</a></li>
+                <li><a href="#">Donate</a></li>
+                <li><a href="#">Subscribe to Newsletter</a></li>
             </ul>
         </div>
         <div class="footer-section">
-            <h3>Help</h3>
-            <ul>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms</a></li>
-                <li><a href="#">Conditions</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h3>Paalmanam</h3>
-            <p>Subscribe to our magazine</p>
-            <form>
-                <input type="email" placeholder="sample@mail.com" required>
-                <button type="submit">Subscribe</button>
-            </form>
+            <h3>Contact Us</h3>
+            <p>Email: ksfoundationsalem2021@gmail.com</p>
+            <p>Phone: 9342359392</p>
         </div>
     </div>
     <div class="footer-bottom">
-        <p>© 2023 Aniyam Foundation</p>
+        <p>&copy; 2024 KS Foundation | All Rights Reserved</p>
     </div>
 </footer>
+
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('nav').classList.toggle('active');
+    });
+</script>
+
+</body>
+</html>

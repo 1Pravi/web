@@ -21,39 +21,43 @@ body {
 
 header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
+    width: 100%;
 }
 
 .logo img {
-    height: 50px;
+    max-width: 150px; /* Adjust as needed */
+}
+nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #333;
+    width: 200px;
+    padding: 20px;
+    border-radius: 0 0 0 10px;
 }
 
-.foundation-info {
-    text-align: center;
-}
-
-.foundation-info h1 {
-    font-size: 24px;
-    color: white;
-}
-
-.foundation-info p {
-    font-size: 12px;
-    color: #f2f2f2;
+/* When nav has the class 'active', it will be shown */
+nav.active {
+    display: flex;
 }
 
 nav ul {
     list-style: none;
     display: flex;
+    gap: 15px;
 }
 
 nav ul li {
-    margin: 0 15px;
+    position: relative;
 }
 
 nav ul li a {
@@ -65,6 +69,35 @@ nav ul li a {
 
 nav ul li a:hover {
     color: red;
+}
+
+.dropdown-menu {
+    display: none; /* Hide dropdown menu by default */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    z-index: 1000;
+}
+
+.dropdown-menu li {
+    margin: 5px 0;
+}
+
+.dropdown-menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+    color: red;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; /* Show dropdown menu on hover */
 }
 
 .donate-button {
@@ -166,6 +199,7 @@ footer {
     border-top: 1px solid #ddd;
     padding-top: 10px;
 }
+
 .scroll-top {
     position: fixed;
     bottom: 20px;
@@ -188,6 +222,7 @@ footer {
 .scroll-top:hover {
     opacity: 1;
 }
+
 /* Floating Menu */
 .floating-menu {
     position: fixed;
@@ -263,8 +298,20 @@ footer {
     display: flex; /* Show when visible */
 }
 
-/* Media query for mobile devices */
+/* Mobile responsive styling */
 @media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-section {
+        margin-bottom: 15px;
+    }
+
+    .footer-section h3 {
+        font-size: 1.2em;
+    }
+
     .floating-menu {
         bottom: 15px;
         right: 15px;
@@ -279,84 +326,4 @@ footer {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 }
-/* Base styling for the footer */
-footer {
-    background-color: #f8f9fa;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-}
-
-.footer-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-section {
-    margin-bottom: 20px;
-}
-
-.footer-section h3 {
-    margin-bottom: 10px;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section ul li {
-    margin-bottom: 5px;
-}
-
-.footer-section ul li a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-.footer-section ul li a:hover {
-    text-decoration: underline;
-}
-
-.footer-section .social-icons {
-    margin-top: 10px;
-}
-
-.footer-section .social-icons a {
-    margin-right: 10px;
-    display: inline-block;
-}
-
-.footer-section .social-icons img {
-    width: 24px;
-    height: 24px;
-}
-
-.footer-section form {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-section form input,
-.footer-section form button {
-    margin-top: 10px;
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* Mobile responsive styling */
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-    }
-
-    .footer-section {
-        margin-bottom: 15px;
-    }
-
-    .footer-section h3 {
-        font-size: 1.2em;
-    }
-}
+/* Ensure the nav is hidden by default */
